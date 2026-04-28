@@ -63,7 +63,7 @@ h2, h3 {
 }
 
 .sobre-mim img {
-    width: 420px;
+    width: 450px;
     height: auto;
     border-radius: 10px;
 }
@@ -169,6 +169,10 @@ footer p {
   .sobre-mim {
     width: 100%;
     flex-direction: column;
+  }
+
+  .sobre-mim img {
+    width: 90%;
   }
     .img {
         display: grid;
