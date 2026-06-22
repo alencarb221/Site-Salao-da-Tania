@@ -6,60 +6,103 @@
 
 body {
     background-color: #f3d4dd;
+    font-family: Poppins, sans-serif;
+    color: #222;
+    font-size: 16px;
 }
 
-header {
-    font-family: playfair display, serif;
-    padding: 50px;
+:root {
+    --bg: #f3d4dd;
+    --primary: #500bb1;
+    --accent: #ff4fa3;
+    --card: #ffffff;
+    --muted: #ab83cf;
+    --text: #222222;
+}
+
+.site-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
     text-align: center;
-    background-color: #500bb1;
+}
+
+.footer-contacts { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.footer-contacts .socials { display:flex; gap:10px; align-items:center; }
+.footer-info a { color: white; text-decoration: underline; }
+
+header {
+    font-family: 'Playfair Display', serif;
+    padding: 30px 20px;
+    text-align: center;
+    background-color: var(--primary);
     color: white;
 }
 
 header h1 {
-    font-size: 3em;
+    font-size: 2rem;
 }
 
 header p {
-    font-size: 1.5em;
-    padding-top: 15px;
+    font-size: 1rem;
+    padding-top: 8px;
 }
 
 .botao {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background-color: #ff4fa3;
+    margin-top: 12px;
+    padding: 10px 20px;
+    background-color: var(--accent);
     color: white;
-    font-size: 1.2em;
+    font-size: 1rem;
     border-radius: 30px;
     text-decoration: none;
-    transition: 0.3s;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
+
+/* show header CTA only on desktop */
+.header-cta { display: none; }
+
+/* sticky WhatsApp button (hidden on desktop) */
+.whatsapp-sticky { display: none; }
 
 .botao:hover {
     background-color: #e13b8f;
+    transform: translateY(-3px);
+}
+
+.botao:focus {
+    outline: 3px solid rgba(255,79,163,0.25);
+    outline-offset: 3px;
 }
 
 .container {
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    font-family: poppins, sans-serif;
+    padding: 16px;
     line-height: 1.6;
-    background-color: #ffff;
-    }
+    background-color: var(--card);
+}
 
 h2, h3 {
-    font-family: playfair display, serif;
-    font-size: 2.2em;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
 }
 
 .sobre-mim {
     display: flex;
-    gap: 50px;
-    margin-bottom: 50px;
-    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+    align-items: stretch;
 }
 
 .sobre-mim img {
@@ -71,8 +114,8 @@ h2, h3 {
 
 .sobre-mim p {
     padding-top: 10px;
-    font-size: 1.2em;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .servicos h2 {
@@ -111,32 +154,33 @@ h2, h3 {
 
 .img {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
-    height: auto;
-    gap: 15px;
-    padding-bottom: 30px;
-    }
+    gap: 12px;
+    padding-bottom: 18px;
+}
 
 .img img {
-    width: 300px;
-    height: 400px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
-}    
+}
 
 .img-cabelos{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
     width: 100%;
-    height: auto;
-    padding: 30px;
-    gap: 30px;
-    }
+    padding: 12px 0;
+    gap: 12px;
+}
 
 .img-cabelos img {
-    width: 300px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
-    }
+}
 
 footer {
     padding: 20px;
@@ -171,24 +215,51 @@ footer p {
     width: 100%;
     flex-direction: column;
   }
+    /* show mobile sticky CTA */
+    .whatsapp-sticky {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            background: var(--accent);
+            color: #fff;
+            width: 56px;
+            height: 56px;
+            border-radius: 999px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+            z-index: 9999;
+            text-decoration: none;
+            font-size: 1.6rem;
+        }
+}
 
-    .img {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        height: auto;
+@media (min-width: 769px) {
+    .sobre-mim {
+        flex-direction: row;
+        gap: 30px;
+        align-items: center;
     }
 
-    .img img {
-        width: 100%;
+    .img {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 
     .img-cabelos {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 
-    .img-cabelos img {
-        width: 100%;
-        
-    }  
+    .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; text-align: left; }
+    .footer-info { max-width: 720px; }
+    /* show header CTA on wider screens, hide sticky */
+    .header-cta { display: inline-block; }
+    .whatsapp-sticky { display: none; }
 }
+
+@media (min-width: 1024px) {
+    header h1 { font-size: 2.6rem; }
+    h2, h3 { font-size: 2.2rem; }
+    .container { padding: 24px; }
+}
+ 
